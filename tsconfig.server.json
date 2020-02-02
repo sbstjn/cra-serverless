@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "commonjs",
+    "types": ["node", "react"],
+    "lib": ["es2018", "dom"],
+    "outDir": ".server",
+    "strict": true,
+    "jsx": "react",
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["server"],
+  "exclude": ["cdk.out", "infra", "public"]
+}
