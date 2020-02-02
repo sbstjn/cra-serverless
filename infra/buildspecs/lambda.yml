@@ -9,6 +9,7 @@ phases:
   build:
     commands:
       - yarn build:server
+      - yarn package:server
 
 artifacts:
   base-directory: .server
