@@ -4,6 +4,7 @@ import * as Lambda from '@aws-cdk/aws-lambda'
 import * as S3 from '@aws-cdk/aws-s3'
 import * as CodePipeline from '@aws-cdk/aws-codepipeline'
 import * as CodePipelineAction from '@aws-cdk/aws-codepipeline-actions'
+import * as SSM from '@aws-cdk/aws-ssm'
 
 export interface PipelineProps extends CDK.StackProps {
   github: {
@@ -22,6 +23,18 @@ export class PipelineStack extends CDK.Stack {
     const bucketAssets = new S3.Bucket(this, 'Files', {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
+    })
+
+    new SSM.StringParameter(this, 'SSMBucketAssetsName', {
+      description: 'S3 Bucket Name for Assets',
+      parameterName: `/cra-serverless/S3/Assets/Name`,
+      stringValue: bucketAssets.bucketName,
+    })
+
+    new SSM.StringParameter(this, 'SSMBucketAssetsDomainName', {
+      description: 'S3 Bucket DomainName for Assets',
+      parameterName: `/cra-serverless/S3/Assets/DomainName`,
+      stringValue: bucketAssets.bucketDomainName,
     })
 
     // AWS CodeBuild artifacts
@@ -95,7 +108,6 @@ export class PipelineStack extends CDK.Stack {
           bucket: bucketAssets,
           runOrder: 10,
         }),
-
         new CodePipelineAction.CloudFormationCreateUpdateStackAction({
           actionName: 'Renderer',
           templatePath: outputCDK.atPath('cra-serverless-lambda.template.json'),
@@ -108,11 +120,6 @@ export class PipelineStack extends CDK.Stack {
           extraInputs: [outputLambda],
         }),
       ],
-    })
-
-    new CDK.CfnOutput(this, 'AssetsURL', {
-      value: bucketAssets.bucketWebsiteUrl,
-      description: 'Assets URL',
     })
   }
 }

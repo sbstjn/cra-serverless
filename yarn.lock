@@ -90,7 +90,7 @@
     "@aws-cdk/core" "1.22.0"
     "@aws-cdk/cx-api" "1.22.0"
 
-"@aws-cdk/aws-cloudfront@1.22.0", "@aws-cdk/aws-cloudfront@^1.21.1":
+"@aws-cdk/aws-cloudfront@1.22.0", "@aws-cdk/aws-cloudfront@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudfront/-/aws-cloudfront-1.22.0.tgz#1b2821ae7eebfd8113280a766d5a1953cf732349"
   integrity sha512-Y/jzSfvsMZUDp/BJbdQxnKr3+ZEt6RnVYYUipK56TVDTGYOHQNenatqj4BMazBm1sk06PP+rTqP90eq4hkw2lA==
@@ -375,7 +375,7 @@
     "@aws-cdk/core" "1.22.0"
     "@aws-cdk/cx-api" "1.22.0"
 
-"@aws-cdk/aws-s3@1.22.0", "@aws-cdk/aws-s3@^1.21.1":
+"@aws-cdk/aws-s3@1.22.0", "@aws-cdk/aws-s3@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-s3/-/aws-s3-1.22.0.tgz#a6d01791799fdca99ef90f401e8303550cd467f3"
   integrity sha512-yGWVowtM+eq/dvgYQZXnrI9ap6vSpPsADT+PpBqFeyb8ch9Knfye22ZZZiKKbaQpkAvqN5SdzMI9veWOMQ4Fgg==
@@ -446,7 +446,7 @@
     "@aws-cdk/aws-kms" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-ssm@1.22.0":
+"@aws-cdk/aws-ssm@1.22.0", "@aws-cdk/aws-ssm@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-ssm/-/aws-ssm-1.22.0.tgz#60d360e3aa904832be69f09df19052d9e5613c90"
   integrity sha512-F9NZHqasENpCplqvXs2q64Ribt2RDHtstBlHZiq2OzGyuXFqIwyZcpG1GgIjJUUclwNRmAAFZk4EudlKuJ6dnA==

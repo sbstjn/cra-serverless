@@ -1,6 +1,7 @@
 import * as APIGateway from '@aws-cdk/aws-apigateway'
 import * as Lambda from '@aws-cdk/aws-lambda'
 import * as CDK from '@aws-cdk/core'
+import * as SSM from '@aws-cdk/aws-ssm'
 
 export class LambdaStack extends CDK.Stack {
   public readonly code: Lambda.CfnParametersCode
@@ -21,15 +22,19 @@ export class LambdaStack extends CDK.Stack {
       timeout: CDK.Duration.seconds(3),
     })
 
-    // API Gateway
     const api = new APIGateway.RestApi(this, 'API')
+    const integration = new APIGateway.LambdaIntegration(render)
 
-    // API Gateway - /
     const root = api.root
-    root.addMethod('ANY', new APIGateway.LambdaIntegration(render))
+    const path = api.root.addResource('{proxy+}')
 
-    // API Gateway - /*
-    const resource = api.root.addResource('{proxy+}')
-    resource.addMethod('ANY', new APIGateway.LambdaIntegration(render))
+    root.addMethod('ANY', integration)
+    path.addMethod('ANY', integration)
+
+    new SSM.StringParameter(this, 'SSMAPIID', {
+      description: 'API Gateway ID',
+      parameterName: `/cra-serverless/API/ID`,
+      stringValue: api.restApiId,
+    })
   }
 }
