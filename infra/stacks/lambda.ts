@@ -28,7 +28,7 @@ export class LambdaStack extends CDK.Stack {
 
     new CodeDeploy.LambdaDeploymentGroup(this, 'RendererDeployment', {
       alias: lambdaAlias,
-      deploymentConfig: CodeDeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
+      deploymentConfig: CodeDeploy.LambdaDeploymentConfig.ALL_AT_ONCE,
     })
   }
 }
