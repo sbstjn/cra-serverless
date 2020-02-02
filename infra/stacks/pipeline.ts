@@ -119,6 +119,13 @@ export class PipelineStack extends CDK.Stack {
           runOrder: 20,
           extraInputs: [outputLambda],
         }),
+        new CodePipelineAction.CloudFormationCreateUpdateStackAction({
+          actionName: 'Domain',
+          templatePath: outputCDK.atPath('cra-serverless-domain.template.json'),
+          stackName: 'cra-serverless-domain',
+          adminPermissions: true,
+          runOrder: 50,
+        }),
       ],
     })
   }
