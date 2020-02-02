@@ -18,7 +18,7 @@ export class LambdaStack extends CDK.Stack {
       handler: 'server/handler/lambda.run',
       runtime: Lambda.Runtime.NODEJS_12_X,
       memorySize: 1024,
-      timeout: CDK.Duration.seconds(12),
+      timeout: CDK.Duration.seconds(3),
     }).addVersion(new Date().toISOString())
 
     const lambdaAlias = new Lambda.Alias(this, 'RendererAlias', {
