@@ -1,4 +1,4 @@
-import * as CodeDeploy from '@aws-cdk/aws-codedeploy'
+import * as APIGateway from '@aws-cdk/aws-apigateway'
 import * as Lambda from '@aws-cdk/aws-lambda'
 import * as CDK from '@aws-cdk/core'
 
@@ -13,22 +13,23 @@ export class LambdaStack extends CDK.Stack {
       objectKeyParam: new CDK.CfnParameter(this, 'CodeBucketObjectKey'),
     })
 
-    const lambdaVersion = new Lambda.Function(this, 'Renderer', {
+    const render = new Lambda.Function(this, 'Renderer', {
       code: this.code,
       handler: 'server/handler/lambda.run',
       runtime: Lambda.Runtime.NODEJS_12_X,
       memorySize: 1024,
       timeout: CDK.Duration.seconds(3),
-    }).addVersion(new Date().toISOString())
-
-    const lambdaAlias = new Lambda.Alias(this, 'RendererAlias', {
-      aliasName: 'Current',
-      version: lambdaVersion,
     })
 
-    new CodeDeploy.LambdaDeploymentGroup(this, 'RendererDeployment', {
-      alias: lambdaAlias,
-      deploymentConfig: CodeDeploy.LambdaDeploymentConfig.ALL_AT_ONCE,
-    })
+    // API Gateway
+    const api = new APIGateway.RestApi(this, 'API')
+
+    // API Gateway - /
+    const root = api.root
+    root.addMethod('ANY', new APIGateway.LambdaIntegration(render))
+
+    // API Gateway - /*
+    const resource = api.root.addResource('{proxy+}')
+    resource.addMethod('ANY', new APIGateway.LambdaIntegration(render))
   }
 }
