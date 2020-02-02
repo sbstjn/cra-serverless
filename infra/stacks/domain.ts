@@ -9,12 +9,13 @@ export class DomainStack extends CDK.Stack {
   constructor(app: CDK.App, id: string, props?: CDK.StackProps) {
     super(app, id, props)
 
+    const apiID = getParam(this, `/cra-serverless/API/ID`)
+    const apiDomainName = `${apiID}.execute-api.${this.region}.amazonaws.com`
+
     const assetsBucket = S3.Bucket.fromBucketAttributes(this, 'AssetsBucket', {
       bucketName: getParam(this, `/cra-serverless/S3/Assets/Name`),
       bucketDomainName: getParam(this, `/cra-serverless/S3/Assets/DomainName`),
     })
-
-    const apiID = getParam(this, `/cra-serverless/API/ID`)
 
     const distribution = new CloudFront.CloudFrontWebDistribution(this, 'CDN', {
       httpVersion: CloudFront.HttpVersion.HTTP2,
@@ -41,7 +42,7 @@ export class DomainStack extends CDK.Stack {
         {
           originPath: '/prod',
           customOriginSource: {
-            domainName: `${apiID}.execute-api.${this.region}.amazonaws.com`,
+            domainName: apiDomainName,
             originProtocolPolicy: CloudFront.OriginProtocolPolicy.HTTPS_ONLY,
           },
           behaviors: [
