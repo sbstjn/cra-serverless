@@ -31,9 +31,9 @@ export class RenderStack extends CDK.Stack {
     root.addMethod('ANY', integration)
     path.addMethod('ANY', integration)
 
-    new SSM.StringParameter(this, 'SSMAPIID', {
+    new SSM.StringParameter(this, 'SSMAPIGatewayRestIs', {
       description: 'API Gateway ID',
-      parameterName: `/cra-serverless/API/ID`,
+      parameterName: `/cra-serverless/APIGateway/ApiId`,
       stringValue: api.restApiId,
     })
   }

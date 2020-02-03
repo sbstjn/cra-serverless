@@ -9,7 +9,7 @@ export class DomainStack extends CDK.Stack {
   constructor(app: CDK.App, id: string, props?: CDK.StackProps) {
     super(app, id, props)
 
-    const apiID = getParam(this, `/cra-serverless/API/ID`)
+    const apiID = getParam(this, `/cra-serverless/APIGateway/ApiId`)
     const apiDomainName = `${apiID}.execute-api.${this.region}.amazonaws.com`
 
     const assetsBucket = S3.Bucket.fromBucketAttributes(this, 'AssetsBucket', {
