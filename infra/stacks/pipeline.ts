@@ -2,6 +2,7 @@ import * as CDK from '@aws-cdk/core'
 import * as CodeBuild from '@aws-cdk/aws-codebuild'
 import * as Lambda from '@aws-cdk/aws-lambda'
 import * as S3 from '@aws-cdk/aws-s3'
+import * as IAM from '@aws-cdk/aws-iam'
 import * as CodePipeline from '@aws-cdk/aws-codepipeline'
 import * as CodePipelineAction from '@aws-cdk/aws-codepipeline-actions'
 import * as SSM from '@aws-cdk/aws-ssm'
@@ -113,7 +114,7 @@ export class PipelineStack extends CDK.Stack {
           runOrder: 10,
         }),
         new CodePipelineAction.CloudFormationCreateUpdateStackAction({
-          actionName: 'Renderer',
+          actionName: 'Render',
           templatePath: outputCDK.atPath('cra-serverless-render.template.json'),
           stackName: 'cra-serverless-render',
           adminPermissions: true,
@@ -133,6 +134,28 @@ export class PipelineStack extends CDK.Stack {
       ],
     })
 
+    // Custom IAM Role to access SSM Parameter Store and invalidate CloudFront Distributions
+    const roleRelease = new IAM.Role(this, 'ReleaseCDNRole', {
+      assumedBy: new IAM.ServicePrincipal('codebuild.amazonaws.com'),
+      path: '/',
+    })
+
+    roleRelease.addToPolicy(
+      new IAM.PolicyStatement({
+        actions: ['ssm:GetParameter'],
+        resources: [`arn:aws:ssm:${this.region}:${this.account}:parameter/cra-serverless/*`],
+        effect: IAM.Effect.ALLOW,
+      }),
+    )
+
+    roleRelease.addToPolicy(
+      new IAM.PolicyStatement({
+        actions: ['cloudfront:CreateInvalidation'],
+        resources: [`arn:aws:cloudfront::${this.account}:distribution/*`],
+        effect: IAM.Effect.ALLOW,
+      }),
+    )
+
     // AWS CodePipeline stage to invalidate CloudFront distribution
     pipeline.addStage({
       stageName: 'Release',
@@ -141,6 +164,7 @@ export class PipelineStack extends CDK.Stack {
           actionName: 'CDN',
           project: new CodeBuild.PipelineProject(this, 'ReleaseCDN', {
             projectName: 'CDN',
+            role: roleRelease,
             buildSpec: CodeBuild.BuildSpec.fromSourceFilename('./infra/buildspecs/release.yml'),
           }),
           input: outputSources,
