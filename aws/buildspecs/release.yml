@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  build:
+    commands:
+      - export DISTRIBUTION_ID=`aws ssm get-parameter --name "/$SSM_NAMESPACE/CloudFront/DistributionID" --query "Parameter.Value" --output text`
+      - yarn cdn:invalidate

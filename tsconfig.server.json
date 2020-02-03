@@ -22,5 +22,5 @@
     "typeRoots": ["./node_modules/@types"]
   },
   "include": ["server"],
-  "exclude": ["cdk.out", "infra", "public"]
+  "exclude": ["cdk.out", "aws", "public"]
 }

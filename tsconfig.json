@@ -15,6 +15,6 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "exclude": ["cdk.out", "infra", "server"],
+  "exclude": ["cdk.out", "aws", "server"],
   "include": ["src"]
 }

@@ -2,9 +2,9 @@ import koa from 'koa'
 import http from 'koa-route'
 import serve from 'koa-static'
 
-import { paths } from '../config'
-import App from '../../src/App'
-import { render } from '../lib/render'
+import App from '../src/App'
+import { paths } from './config'
+import { render } from './lib/render'
 
 export const Router = new koa()
 

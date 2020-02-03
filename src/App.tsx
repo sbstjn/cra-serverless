@@ -31,7 +31,7 @@ const App: React.FC = () => (
     <GlobalStyles />
 
     <Helmet>
-      <title>cra-serverless</title>
+      <title>{process.env.REACT_APP_NAME}</title>
     </Helmet>
 
     <Wrapper>

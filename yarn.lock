@@ -67,7 +67,7 @@
     "@aws-cdk/aws-sns" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-certificatemanager@1.22.0", "@aws-cdk/aws-certificatemanager@^1.21.1":
+"@aws-cdk/aws-certificatemanager@1.22.0", "@aws-cdk/aws-certificatemanager@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-certificatemanager/-/aws-certificatemanager-1.22.0.tgz#2bff88824eaf782c8b6bd3c5e0f716aafa513413"
   integrity sha512-0sKB0e8E8AmiYHVgVzRjGkywG91P6Eikk6wUcYz/aZQS4E9UlMhy5AtWpwZ9VljcULslgtwP6ckackAR9c5vQQ==
@@ -110,7 +110,7 @@
     "@aws-cdk/aws-iam" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-codebuild@1.22.0", "@aws-cdk/aws-codebuild@^1.21.1":
+"@aws-cdk/aws-codebuild@1.22.0", "@aws-cdk/aws-codebuild@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codebuild/-/aws-codebuild-1.22.0.tgz#d97041fbba351d742010a479142aca5786faf8c8"
   integrity sha512-oJ/LgIepmSOfj58FPL47/f0sWqEfmuCI1ySvSOsXEGvalofOR+8uQmBdsuIFTAanTQIGT5aykZUcNWnyA4Qsvg==
@@ -153,7 +153,7 @@
     "@aws-cdk/aws-s3" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-codepipeline-actions@^1.21.1":
+"@aws-cdk/aws-codepipeline-actions@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codepipeline-actions/-/aws-codepipeline-actions-1.22.0.tgz#64609faf85a2b21cabfc4e9275fcb0db2fcf144e"
   integrity sha512-6BrPKJXSQc/5PGA3q7OzPReythpvuzEgVQYcYgfrUsdKke2KdNsdiAnpChHlsyy4cCMKHtLEyuNSuA/x4vETSw==
@@ -175,7 +175,7 @@
     "@aws-cdk/aws-sns-subscriptions" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-codepipeline@1.22.0", "@aws-cdk/aws-codepipeline@^1.21.1":
+"@aws-cdk/aws-codepipeline@1.22.0", "@aws-cdk/aws-codepipeline@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-codepipeline/-/aws-codepipeline-1.22.0.tgz#467d93767bd9bd5e251255e037bab5dc7c6644cc"
   integrity sha512-IH9qcJOImVIvrRCMLNh459n68OC/QAplvJ/NoY/cWxkkicbWAj2Kl0+4+N1ztItETHKYYnrmWeQt1q5JORxxEA==
@@ -338,7 +338,7 @@
     "@aws-cdk/aws-iam" "1.22.0"
     "@aws-cdk/core" "1.22.0"
 
-"@aws-cdk/aws-route53-targets@1.22.0", "@aws-cdk/aws-route53-targets@^1.21.1":
+"@aws-cdk/aws-route53-targets@1.22.0", "@aws-cdk/aws-route53-targets@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-route53-targets/-/aws-route53-targets-1.22.0.tgz#bff9389c1e5db861cb6ae91c4af362a602e72bae"
   integrity sha512-z3aem+hbrdq7kQyMHgIij5dbwOkmT4IWr/en+ejx/wNPRmFIvavRlR22cBZdy4VoTZTRHk3Di0ei/sHtF5N8nA==
@@ -354,7 +354,7 @@
     "@aws-cdk/core" "1.22.0"
     "@aws-cdk/region-info" "1.22.0"
 
-"@aws-cdk/aws-route53@1.22.0", "@aws-cdk/aws-route53@^1.21.1":
+"@aws-cdk/aws-route53@1.22.0", "@aws-cdk/aws-route53@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-route53/-/aws-route53-1.22.0.tgz#18e5df9e8e4e22607b14431e4f1b0718b4908042"
   integrity sha512-h8BCEJNubp4kzJWyiTYOIltY/rke7dzR5XttwgPJ1GuaMG4CRLwhAjHDAse0bVbfcWqbodthO6tv5uJgSdQULA==
@@ -486,7 +486,7 @@
     string-width "^4.2.0"
     table "^5.4.6"
 
-"@aws-cdk/core@1.22.0", "@aws-cdk/core@^1.21.1":
+"@aws-cdk/core@1.22.0", "@aws-cdk/core@^1.22.0":
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.22.0.tgz#45cc5e962e71c34988d243104711b5558dcb4bc1"
   integrity sha512-SD0PIOEnZ97ghF4bIf097U9l9jPtPQ5u8Uv9Uh4VwwwIPR6H07O5Qpkoj6rUwSmXc6HUlBL9OKcVjW47kMorNQ==
@@ -2758,7 +2758,7 @@ autoprefixer@^9.6.1:
     postcss "^7.0.26"
     postcss-value-parser "^4.0.2"
 
-aws-cdk@^1.21.1:
+aws-cdk@^1.22.0:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-1.22.0.tgz#61bb6156cd46e30339b828e604b4edf8a2d6bcf1"
   integrity sha512-hd1BDhlR/TYRjy6mK2TSJaPHZo3wvxYXfNS/w1PxmhKyeDTEOn/8CLaWMDaTN2nzoHr6iW//3J7yRUafmrLIVw==

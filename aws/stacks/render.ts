@@ -1,12 +1,16 @@
 import * as APIGateway from '@aws-cdk/aws-apigateway'
 import * as Lambda from '@aws-cdk/aws-lambda'
-import * as CDK from '@aws-cdk/core'
 import * as SSM from '@aws-cdk/aws-ssm'
+import * as CDK from '@aws-cdk/core'
+
+export interface RenderProps extends CDK.StackProps {
+  name: string
+}
 
 export class RenderStack extends CDK.Stack {
   public readonly code: Lambda.CfnParametersCode
 
-  constructor(app: CDK.App, id: string, props?: CDK.StackProps) {
+  constructor(app: CDK.App, id: string, props: RenderProps) {
     super(app, id, props)
 
     this.code = Lambda.Code.cfnParameters({
@@ -33,7 +37,7 @@ export class RenderStack extends CDK.Stack {
 
     new SSM.StringParameter(this, 'SSMAPIGatewayRestIs', {
       description: 'API Gateway ID',
-      parameterName: `/cra-serverless/APIGateway/ApiId`,
+      parameterName: `/${props.name}/APIGateway/ApiId`,
       stringValue: api.restApiId,
     })
   }
