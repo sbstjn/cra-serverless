@@ -76,7 +76,7 @@ export class PipelineStack extends CDK.Stack {
           }),
           input: outputSources,
           outputs: [outputCDK],
-          runOrder: 0,
+          runOrder: 10,
         }),
         new CodePipelineAction.CodeBuildAction({
           actionName: 'Assets',
@@ -86,7 +86,7 @@ export class PipelineStack extends CDK.Stack {
           }),
           input: outputSources,
           outputs: [outputAssets],
-          runOrder: 0,
+          runOrder: 10,
         }),
         new CodePipelineAction.CodeBuildAction({
           actionName: 'Render',
@@ -97,7 +97,7 @@ export class PipelineStack extends CDK.Stack {
           input: outputSources,
           outputs: [outputRender],
           extraInputs: [outputAssets],
-          runOrder: 10,
+          runOrder: 20,
         }),
       ],
     })

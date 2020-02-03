@@ -6,4 +6,5 @@ phases:
       nodejs: 12
   build:
     commands:
+      - export DISTRIBUTION_ID=`aws ssm get-parameter --name "/cra-serverless/CloudFront/DistributionID" --query "Parameter.Value" --output text`
       - yarn cdn:invalidate
