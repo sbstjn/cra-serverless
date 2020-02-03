@@ -1,11 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async'
 import { Route, Switch } from 'react-router'
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-import { Home } from './pages/Home'
 import { Details } from './pages/Details'
+import { NotFound } from './pages/Error'
+import { Home } from './pages/Home'
+
+import { Footer } from './components/Footer'
 import { Navigation } from './components/Navigation'
 
 const GlobalStyles = createGlobalStyle`
@@ -29,7 +31,7 @@ const App: React.FC = () => (
     <GlobalStyles />
 
     <Helmet>
-      <title>CRA Serverless</title>
+      <title>cra-serverless</title>
     </Helmet>
 
     <Wrapper>
@@ -37,8 +39,12 @@ const App: React.FC = () => (
 
       <Switch>
         <Route path="/details/:id" component={Details} />
-        <Route component={Home} />
+        <Route path="/" component={Home} exact />
+
+        <Route component={NotFound} />
       </Switch>
+
+      <Footer />
     </Wrapper>
   </>
 )

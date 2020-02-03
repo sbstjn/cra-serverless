@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react'
-import styled from 'styled-components'
 import { useLocation, NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 const activeClassName = 'active'
+
 const StyledLink = styled(NavLink).attrs({
   activeClassName,
 })`
@@ -46,6 +47,10 @@ export const Navigation = () => {
     return location.pathname.indexOf('details/') > -1
   }, [location.pathname])
 
+  const random = Math.random()
+    .toString(36)
+    .substring(2, 15)
+
   return (
     <Wrapper>
       <List>
@@ -57,11 +62,11 @@ export const Navigation = () => {
 
         <ListItem>
           <StyledLink
-            to="/details/foo"
+            to={'/details/' + random}
             activeClassName={activeClassName}
             isActive={isDetailsActive}
           >
-            Details
+            Dynamic
           </StyledLink>
         </ListItem>
       </List>
