@@ -26,6 +26,7 @@
     "prebuild:server": "yarn clean:server; yarn build",
     "build:server": "tsc --project tsconfig.server.json",
     "postbuild:server": "cp -rf build .server/build",
+    "cdn:invalidate": "aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths \"/*\"",
     "package:server": "yarn install --prod --silent --no-lockfile --non-interactive --modules-folder .server/node_modules",
     "cdk": "cdk"
   },

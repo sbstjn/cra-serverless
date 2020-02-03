@@ -65,5 +65,11 @@ export class DomainStack extends CDK.Stack {
       parameterName: `/cra-serverless/CloudFront/DomainName`,
       stringValue: distribution.domainName,
     })
+
+    new SSM.StringParameter(this, 'SSMCloudFrontDistributionID', {
+      description: 'CloudFront DistributionID',
+      parameterName: `/cra-serverless/CloudFront/DistributionID`,
+      stringValue: distribution.distributionId,
+    })
   }
 }

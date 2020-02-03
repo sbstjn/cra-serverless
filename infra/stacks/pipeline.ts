@@ -5,6 +5,7 @@ import * as S3 from '@aws-cdk/aws-s3'
 import * as CodePipeline from '@aws-cdk/aws-codepipeline'
 import * as CodePipelineAction from '@aws-cdk/aws-codepipeline-actions'
 import * as SSM from '@aws-cdk/aws-ssm'
+import { getParam } from '../lib/helpers'
 
 export interface PipelineProps extends CDK.StackProps {
   github: {
@@ -40,7 +41,7 @@ export class PipelineStack extends CDK.Stack {
     // AWS CodeBuild artifacts
     const outputSources = new CodePipeline.Artifact('sources')
     const outputAssets = new CodePipeline.Artifact('assets')
-    const outputLambda = new CodePipeline.Artifact('lambda')
+    const outputRender = new CodePipeline.Artifact('render')
     const outputCDK = new CodePipeline.Artifact('cdk')
 
     // AWS CodePipeline pipeline
@@ -87,13 +88,13 @@ export class PipelineStack extends CDK.Stack {
           outputs: [outputAssets],
         }),
         new CodePipelineAction.CodeBuildAction({
-          actionName: 'Lambda',
-          project: new CodeBuild.PipelineProject(this, 'BuildLambda', {
-            projectName: 'Lambda',
-            buildSpec: CodeBuild.BuildSpec.fromSourceFilename('./infra/buildspecs/lambda.yml'),
+          actionName: 'Render',
+          project: new CodeBuild.PipelineProject(this, 'BuildRender', {
+            projectName: 'Render',
+            buildSpec: CodeBuild.BuildSpec.fromSourceFilename('./infra/buildspecs/render.yml'),
           }),
           input: outputSources,
-          outputs: [outputLambda],
+          outputs: [outputRender],
         }),
       ],
     })
@@ -110,14 +111,14 @@ export class PipelineStack extends CDK.Stack {
         }),
         new CodePipelineAction.CloudFormationCreateUpdateStackAction({
           actionName: 'Renderer',
-          templatePath: outputCDK.atPath('cra-serverless-lambda.template.json'),
-          stackName: 'cra-serverless-lambda',
+          templatePath: outputCDK.atPath('cra-serverless-render.template.json'),
+          stackName: 'cra-serverless-render',
           adminPermissions: true,
           parameterOverrides: {
-            ...props.code.assign(outputLambda.s3Location),
+            ...props.code.assign(outputRender.s3Location),
           },
           runOrder: 20,
-          extraInputs: [outputLambda],
+          extraInputs: [outputRender],
         }),
         new CodePipelineAction.CloudFormationCreateUpdateStackAction({
           actionName: 'Domain',
@@ -125,6 +126,21 @@ export class PipelineStack extends CDK.Stack {
           stackName: 'cra-serverless-domain',
           adminPermissions: true,
           runOrder: 50,
+        }),
+      ],
+    })
+
+    // AWS CodePipeline stage to invalidate CloudFront distribution
+    pipeline.addStage({
+      stageName: 'Release',
+      actions: [
+        new CodePipelineAction.CodeBuildAction({
+          actionName: 'CDN',
+          project: new CodeBuild.PipelineProject(this, 'ReleaseCDN', {
+            projectName: 'CDN',
+            buildSpec: CodeBuild.BuildSpec.fromSourceFilename('./infra/buildspecs/release.yml'),
+          }),
+          input: outputSources,
         }),
       ],
     })

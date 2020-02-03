@@ -6,7 +6,6 @@
     "declaration": false,
     "strict": true,
     "noImplicitAny": true,
-    "rootDir": "./lambda",
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,

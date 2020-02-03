@@ -3,7 +3,7 @@ import * as Lambda from '@aws-cdk/aws-lambda'
 import * as CDK from '@aws-cdk/core'
 import * as SSM from '@aws-cdk/aws-ssm'
 
-export class LambdaStack extends CDK.Stack {
+export class RenderStack extends CDK.Stack {
   public readonly code: Lambda.CfnParametersCode
 
   constructor(app: CDK.App, id: string, props?: CDK.StackProps) {
@@ -14,7 +14,7 @@ export class LambdaStack extends CDK.Stack {
       objectKeyParam: new CDK.CfnParameter(this, 'CodeBucketObjectKey'),
     })
 
-    const render = new Lambda.Function(this, 'Renderer', {
+    const render = new Lambda.Function(this, 'Render', {
       code: this.code,
       handler: 'server/handler/lambda.run',
       runtime: Lambda.Runtime.NODEJS_12_X,

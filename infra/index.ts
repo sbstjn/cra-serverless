@@ -2,14 +2,14 @@ import * as cdk from '@aws-cdk/core'
 
 import { config } from '../config'
 import { DomainStack } from './stacks/domain'
-import { LambdaStack } from './stacks/lambda'
+import { RenderStack } from './stacks/render'
 import { PipelineStack } from './stacks/pipeline'
 
 const name = 'cra-serverless'
 const app = new cdk.App()
 
-const stackLambda = new LambdaStack(app, `${name}-lambda`, config)
+const stackRender = new RenderStack(app, `${name}-render`, config)
 const stackDomain = new DomainStack(app, `${name}-domain`, config)
-new PipelineStack(app, `${name}-pipeline`, { ...config, code: stackLambda.code })
+new PipelineStack(app, `${name}-pipeline`, { ...config, code: stackRender.code })
 
 app.synth()
