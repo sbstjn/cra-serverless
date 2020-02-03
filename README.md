@@ -1,5 +1,7 @@
-# Serverless SSR with Create React App
+# Serverless SSR for [create-react-app][cra]
 
-> Example project based on [create-react-app][cra] with support for Server-Side Rendering based on AWS Lambda and Amazon CloudFront. 
+> Use [create-react-app][cra] with [Server-Side Rendering][ssr] on AWS Lambda.
 
 [cra]: https://create-react-app.dev/
+[ssr]: https://reactjs.org/docs/react-dom-server.html
+[cdk]: https://docs.aws.amazon.com/cdk/latest/guide/home.html
