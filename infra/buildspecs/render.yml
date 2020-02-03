@@ -8,6 +8,8 @@ phases:
       - yarn install
   build:
     commands:
+      - mkdir .server
+      - cp -rf $CODEBUILD_SRC_DIR_assets .server
       - yarn build:server
       - yarn package:server
 

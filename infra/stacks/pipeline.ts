@@ -5,7 +5,6 @@ import * as S3 from '@aws-cdk/aws-s3'
 import * as CodePipeline from '@aws-cdk/aws-codepipeline'
 import * as CodePipelineAction from '@aws-cdk/aws-codepipeline-actions'
 import * as SSM from '@aws-cdk/aws-ssm'
-import { getParam } from '../lib/helpers'
 
 export interface PipelineProps extends CDK.StackProps {
   github: {
@@ -77,6 +76,7 @@ export class PipelineStack extends CDK.Stack {
           }),
           input: outputSources,
           outputs: [outputCDK],
+          runOrder: 0,
         }),
         new CodePipelineAction.CodeBuildAction({
           actionName: 'Assets',
@@ -86,6 +86,7 @@ export class PipelineStack extends CDK.Stack {
           }),
           input: outputSources,
           outputs: [outputAssets],
+          runOrder: 0,
         }),
         new CodePipelineAction.CodeBuildAction({
           actionName: 'Render',
@@ -95,6 +96,8 @@ export class PipelineStack extends CDK.Stack {
           }),
           input: outputSources,
           outputs: [outputRender],
+          extraInputs: [outputAssets],
+          runOrder: 10,
         }),
       ],
     })

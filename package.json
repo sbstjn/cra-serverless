@@ -23,7 +23,6 @@
     "clean:server": "rimraf .server",
     "prerun:local": "yarn build",
     "run:local": "npx ts-node --project tsconfig.server.json server/local.ts",
-    "prebuild:server": "yarn clean:server; yarn build",
     "build:server": "tsc --project tsconfig.server.json",
     "postbuild:server": "cp -rf build .server/build",
     "cdn:invalidate": "aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths \"/*\"",
