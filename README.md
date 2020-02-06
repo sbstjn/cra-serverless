@@ -4,13 +4,13 @@
 [![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com)
 [![superluminar.io](https://badgen.now.sh/badge/by/superluminar/red)](https://superluminar.io)
 
-> Full-featured AWS architecture to use [Server-Side Rendering][ssr] for any [create-react-app][cra] project using Lambda, API Gateway, CloudFront. All infrastructure is configured using the [AWS Cloud Development Kit][cdk] and can be deployed using [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild].
+> Full-featured AWS architecture to use [**Server-Side Rendering**][ssr] for any [**create-react-app**][cra] project using **Lambda**, **API Gateway**, **CloudFront**. All infrastructure is configured using the [**AWS Cloud Development Kit**][cdk] and can be deployed using [**AWS CodePipeline**][pipeline] and [**AWS CodeBuild**][codebuild].
 >
-> Have fun, and be a nice anti-fascist human being!
+> Have fun, and be a nice **anti-fascist** human being!
 
 Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
-The idea of **cra-serverless** is pretty simple: Use your existing, un-ejected, and unpatched [create-react-app][cra] and replace `BrowserRouter` with `StaticRouter`, deploy it to AWS Lambda, and finally put a CDN in front of it. You'll have your same React SPA, but now you can have pre-rendered HTML content for all routes in your application. This event works fine with frameworks like [styled-components][sc] or [apollo client][apollo] for using [GraphQL on AppSync][appsync].
+The idea of **cra-serverless** is pretty simple: Use your existing, un-ejected, and unpatched [**create-react-app**][cra] and replace **`BrowserRouter`** with **`StaticRouter`**, deploy it to [_AWS Lambda_][lambda], and finally put a CDN in front of it. You'll have your same React SPA, but now you can have pre-rendered HTML content for all routes in your application. This even works fine with frameworks like [**styled-components**][sc] or [**apollo client**][apollo] for using [**GraphQL on AppSync**][appsync].
 
 ![React SPA with serverless pre-rendering](./aws/overview.png)
 
