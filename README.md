@@ -52,7 +52,7 @@ const markup = renderToString(
 )
 ```
 
-In a Nutshell, [**cra-serverless**][cra-serverless] uses existing features of the frameworks you already use and wraps them in a serverless architecture with AWS Lambda.
+Next, the value of `markup` will be injected into your `index.html` file and that's it. In a Nutshell, [**cra-serverless**][cra-serverless] uses existing features of the frameworks you already use and wraps them in a serverless architecture with AWS Lambda.
 
 ## Deployments and Configuration
 
