@@ -10,7 +10,7 @@
 
 Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
-The idea of **cra-serverless** is pretty simple: Use your existing, un-ejected, and unpatched [**create-react-app**][cra] and replace **`BrowserRouter`** with **`StaticRouter`**, deploy it to [_AWS Lambda_][lambda], and finally put a CDN in front of it. You'll have your same React SPA, but now you can have pre-rendered HTML content for all routes in your application. This even works fine with frameworks like [**styled-components**][sc] or [**apollo client**][apollo] for using [**GraphQL on AppSync**][appsync].
+The idea of **cra-serverless** is pretty simple: Use your existing, un-ejected, and unpatched [**create-react-app**][cra] and replace **`BrowserRouter`** with **`StaticRouter`**, deploy it to [**AWS Lambda**][lambda], and finally put a CDN in front of it. You'll have your same React SPA, but now you can have pre-rendered HTML content for all routes in your application. This even works fine with frameworks like [**styled-components**][sc] or [**apollo client**][apollo] for using [**GraphQL on AppSync**][appsync].
 
 ![React SPA with serverless pre-rendering](./aws/overview.png)
 
