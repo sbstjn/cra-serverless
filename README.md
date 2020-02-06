@@ -4,7 +4,7 @@
 [![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com)
 [![superluminar.io](https://badgen.now.sh/badge/by/superluminar/red)](https://superluminar.io)
 
-> Full-featured AWS architecture to use [Server-Side Rendering][ssr] for any [create-react-app][cra] project using Lambda, API Gateway, CloudFront. All infrastructure is configured using the [AWS Cloud Development Kit][cdk] and can be deployed using [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild].
+> Full-featured AWS architecture to use [Server-Side Rendering][ssr] for any [create-react-app][cra] project using Lambda, API Gateway, CloudFront. All infrastructure is configured using the [AWS Cloud Development Kit][cdk] and can be deployed using [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild]. Have fun! 🚀
 
 Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
