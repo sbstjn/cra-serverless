@@ -12,7 +12,7 @@ The idea of **cra-serverless** is pretty simple: Use your existing, default, une
 
 ![React SPA with serverless pre-rendering](./aws/overview.png)
 
-Yes, this is **serverless server-side rendering**, so let's call it **serverless pre-rendering for React**. 🤯🚀
+Yes, this is **serverless server-side rendering**, so let's call it **serverless pre-rendering for React**. 🤯
 
 ## Architecture
 
