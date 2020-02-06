@@ -6,7 +6,7 @@
 
 > Resilient architecture to use [Server-Side Rendering][ssr] for any [create-react-app][cra] project on Amazon Web Services using Lambda, API Gateway, CloudFront. All infrastructure is configured using the [AWS Cloud Development Kit][cdk] and can be deployed using [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild].
 
-Whenever you search for server-side rendering of React applications, you will read it's hard to accomplish. But why? Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
+Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
 The idea of **cra-serverless** is pretty simple: Use your existing, default, unejected, and unpatched [create-react-app][cra] and replace `BrowserRouter` with `StaticRouter`, deploy it to AWS Lambda, and finally put a CDN in front of it. You'll have your same React SPA, but now you can have pre-rendered HTML content for all routes in your application. This event works fine with frameworks like [styled-components][sc] or [apollo client][apollo] for using [GraphQL on AppSync][appsync].
 
@@ -22,6 +22,37 @@ Yes, this is **serverless server-side rendering**, so let's call it **serverless
 - **Infrastructure as Code** using [AWS Cloud Development Kit][cdk] in `./aws`
 - [AWS Lambda][lambda] for server-side (pre-)rendering of **React SPA**
 - [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild] for **Continious Deployments**
+
+## How it Works - In a Nutshell
+
+Most React applications use the `react-router-dom` with `BrowserRouter` :
+
+```typescript
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+
+React.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root'),
+)
+```
+
+Lucky us, a `StaticRouter` exists as well and `react-dom` has a function called `renderToString` :
+
+```typescript
+import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
+
+const markup = renderToString(
+  <StaticRouter location={path}>
+    <App />
+  </StaticRouter>,
+)
+```
+
+In a Nutshell, [**cra-serverless**][cra-serverless] uses existing features of the frameworks you already use and wraps them in a serverless architecture with AWS Lambda.
 
 ## Deployments and Configuration
 
@@ -100,6 +131,7 @@ To make sure you have a pleasant experience, please read the [code of conduct](C
 [sm]: https://aws.amazon.com/systems-manager/
 [token]: https://github.com/settings/tokens
 [cra-pipeline]: https://github.com/sbstjn/cra-pipeline
+[cra-serverless]: https://github.com/sbstjn/cra-serverless
 [lambda]: https://aws.amazon.com/lambda/
 [appsync]: https://aws.amazon.com/appsync/
 [apollo]: https://www.apollographql.com/docs/react/
