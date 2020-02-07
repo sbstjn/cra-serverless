@@ -1,7 +1,7 @@
 # Serverless SSR for [create-react-app][cra]
 
 [![MIT License](https://badgen.now.sh/badge/License/MIT/blue)](https://github.com/sbstjn/cra-serverless/blob/master/LICENSE.md)
-[![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com)
+[![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com/serverless-create-react-app-server-side-rendering-ssr-lamda.html)
 [![superluminar.io](https://badgen.now.sh/badge/by/superluminar/red)](https://superluminar.io)
 
 > Full-featured AWS architecture to use [**Server-Side Rendering**][ssr] for any [**create-react-app**][cra] project using **Lambda**, **API Gateway**, **CloudFront**. All infrastructure is configured using the [**AWS Cloud Development Kit**][cdk] and can be deployed using [**AWS CodePipeline**][pipeline] and [**AWS CodeBuild**][codebuild].
