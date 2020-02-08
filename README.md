@@ -26,6 +26,30 @@ Yes, this is **serverless server-side rendering**, so let's call it **serverless
 - [Amazon CloudFront][cloudfront] to **cache pre-rendered HTML** and serve assets from S3
 - [AWS CodePipeline][pipeline] and [AWS CodeBuild][codebuild] for **Continious Deployments**
 
+## Usage
+
+The primary goal for [cra-serverless](https://github.com/sbstjn/cra-serverless) is to use a default [create-react-app][cra] setup without any changes and avoid to eject it from react-scripts.
+
+```bash
+# Start your local environment as always
+$ > yarn start
+
+# Build your static SPA as always
+$ > yarn build
+```
+
+You can develop and build SPA with the usual flow. Afterwards, you can run a local HTTP server with [koa][koa] to test-drive your server-side rendering. The built project is intended to be uploaded to AWS Lambda, but you can deploy the Node.js application to other services as well.
+
+```bash
+# Start local server-side rendering service
+$ > yarn run:local
+
+# Build Node.js service for server-side rendering
+$ > yarn build:server
+```
+
+All full-featured pipeline using AWS CodePipeline and AWS CodeBuild using the  [AWS Cloud Development Kit][cdk] is included to [support continious deployments](#deployments-and-configuration). (*Jump to [Deployments and Configuration](#deployments-and-configuration)*)
+
 ## How it Works - In a Nutshell
 
 Most React applications use the `react-router-dom` with `BrowserRouter` :
