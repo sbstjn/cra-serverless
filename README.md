@@ -9,6 +9,9 @@
 > Have fun, and be a nice **anti-fascist** human being!
 >
 > https://d31tuk9nqnnpkk.cloudfront.net/
+> 
+> **Guide (EN):** [React with server-side rendering on AWS Lambda](https://sbstjn.com/serverless-create-react-app-server-side-rendering-ssr-lamda.html) on [sbstjn.com](https://sbstjn.com) \
+> **Guide (DE):** [React und server-side rendering mit AWS Lambda und CloudFront](https://superluminar.io/2020/02/07/react-spa-und-server-side-rendering-ssr-mit-aws-lambda-cloudfront-und-dem-cdk/) on [superluminar.io](https://superluminar.io)
 
 Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
@@ -17,6 +20,11 @@ The idea of **cra-serverless** is pretty simple: Use your existing, un-ejected, 
 ![React SPA with serverless pre-rendering](./aws/overview.png)
 
 Yes, this is **serverless server-side rendering**, so let's call it **serverless pre-rendering for React**. 🤯
+
+##### Extended Guides:
+
+- [React with server-side rendering on AWS Lambda](https://sbstjn.com/serverless-create-react-app-server-side-rendering-ssr-lamda.html) (**English**)
+- [React und server-side rendering mit AWS Lambda und CloudFront](https://superluminar.io/2020/02/07/react-spa-und-server-side-rendering-ssr-mit-aws-lambda-cloudfront-und-dem-cdk/) (**German**)
 
 ## Architecture
 
