@@ -1,12 +1,14 @@
 # Serverless SSR for [create-react-app][cra]
 
 [![MIT License](https://badgen.now.sh/badge/License/MIT/blue)](https://github.com/sbstjn/cra-serverless/blob/master/LICENSE.md)
-[![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com)
-[![superluminar.io](https://badgen.now.sh/badge/by/superluminar/red)](https://superluminar.io)
+[![sbstjn.com](https://badgen.now.sh/badge/by/sbstjn/purple)](https://sbstjn.com/serverless-create-react-app-server-side-rendering-ssr-lamda.html)
+[![superluminar.io](https://badgen.now.sh/badge/by/superluminar/red)](https://superluminar.io/2020/02/07/react-spa-und-server-side-rendering-ssr-mit-aws-lambda-cloudfront-und-dem-cdk/)
 
 > Full-featured AWS architecture to use [**Server-Side Rendering**][ssr] for any [**create-react-app**][cra] project using **Lambda**, **API Gateway**, **CloudFront**. All infrastructure is configured using the [**AWS Cloud Development Kit**][cdk] and can be deployed using [**AWS CodePipeline**][pipeline] and [**AWS CodeBuild**][codebuild].
 >
 > Have fun, and be a nice **anti-fascist** human being!
+>
+> https://d31tuk9nqnnpkk.cloudfront.net/
 
 Whenever you search for **server-side rendering** of React applications, you will read it's hard to accomplish. **But why?** Most probably, you'll end up with frameworks like [razzle](https://github.com/jaredpalmer/razzle) or [Next.js](https://nextjs.org/) only because you wanted a little bit of pre-rendered HTML for your React application.
 
