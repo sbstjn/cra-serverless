@@ -64,7 +64,7 @@ All full-featured pipeline using AWS CodePipeline and AWS CodeBuild using the  [
 
 Most React applications use the `react-router-dom` with `BrowserRouter` :
 
-```typescript
+```tsx
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
