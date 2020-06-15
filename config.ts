@@ -1,8 +1,13 @@
 export const config = {
   name: 'cra-serverless',
   github: {
-    owner: 'sbstjn',
+    owner: 'nullsumme',
     repository: 'cra-serverless',
   },
-  env: { region: 'us-east-1' },
+  domainName: 'inator.it',
+  subDomain: 'story',
+  env: { 
+    account: process.env.CDK_DEFAULT_ACCOUNT, 
+    region: process.env.CDK_DEFAULT_REGION
+  },
 }

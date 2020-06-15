@@ -68,6 +68,20 @@ export class PipelineStack extends CDK.Stack {
       ],
     })
 
+    // Custom IAM Role to access Route53
+    const roleBuild = new IAM.Role(this, 'BuildCDKRole', {
+      assumedBy: new IAM.ServicePrincipal('codebuild.amazonaws.com'),
+      path: '/',
+    })
+
+    roleBuild.addToPolicy(
+      new IAM.PolicyStatement({
+        actions: ['route53:ListHostedZonesByName'],
+        resources: ['*'],
+        effect: IAM.Effect.ALLOW,
+      }),
+    )
+
     // AWS CodePipeline stage to build CRA website and CDK resources
     pipeline.addStage({
       stageName: 'Build',
@@ -75,6 +89,7 @@ export class PipelineStack extends CDK.Stack {
         new CodePipelineAction.CodeBuildAction({
           actionName: 'CDK',
           project: new CodeBuild.PipelineProject(this, 'BuildCDK', {
+            role: roleBuild,
             projectName: 'CDK',
             buildSpec: CodeBuild.BuildSpec.fromSourceFilename('./aws/buildspecs/cdk.yml'),
           }),
